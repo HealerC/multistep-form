@@ -1,5 +1,6 @@
+import AddOns from "@/pages/add-ons";
 import React from "react";
-import { defaultState, StateKeys } from "./interfaces-states";
+import { Addons, defaultState, StateKeys } from "./interfaces-states";
 
 type Context = typeof defaultState & {
   handleChange(event: React.ChangeEvent<HTMLInputElement>): void;
@@ -15,7 +16,19 @@ export default function AppProvider({
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const name = event.target.name as StateKeys;
-    const value = event.target.value;
+    let value = event.target.value;
+
+    if (name === "addOns") {
+      const stateAddons = state.addOns;
+
+      if (stateAddons.includes(value as Addons)) {
+        const addOns = stateAddons.filter((item) => item !== value);
+        setState({ ...state, addOns });
+      } else {
+        setState({ ...state, addOns: [...state.addOns, value as Addons] });
+      }
+      return;
+    }
 
     setState({ ...state, [name]: value });
   }

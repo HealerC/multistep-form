@@ -8,7 +8,7 @@ export const defaultState = {
   phone: "",
   planDuration: "" as PlanDuration,
   plan: "" as Plan,
-  addons: "" as Addons,
+  addOns: [] as Addons[],
 };
 
 export type StateKeys = keyof typeof defaultState;
