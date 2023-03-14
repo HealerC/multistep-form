@@ -1,5 +1,5 @@
 import React from "react";
-import { defaultState } from "./interfaces-states";
+import { defaultState, StateKeys } from "./interfaces-states";
 
 type Context = typeof defaultState & {
   handleChange(event: React.ChangeEvent<HTMLInputElement>): void;
@@ -14,7 +14,10 @@ export default function AppProvider({
   const [state, setState] = React.useState<typeof defaultState>(defaultState);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    console.log("Hello world");
+    const name = event.target.name as StateKeys;
+    const value = event.target.value;
+
+    setState({ ...state, [name]: value });
   }
 
   return (
