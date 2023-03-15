@@ -37,7 +37,20 @@ export default function Layout({ children }: LayoutProps) {
           </ul>
         </nav>
 
-        <main>{loading ? "Loading..." : children}</main>
+        <main>
+          {loading ? (
+            <>Loading...</>
+          ) : (
+            <>
+              {children}
+              <div className="bg-orange-300">
+                <h2>What's going on</h2>
+                <button>Go Back</button>
+                <button>Next step</button>
+              </div>
+            </>
+          )}
+        </main>
       </div>
     </>
   );
