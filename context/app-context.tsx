@@ -1,18 +1,39 @@
-import AddOns from "@/pages/add-ons";
 import React from "react";
-import { Addons, defaultState, StateKeys } from "./interfaces-states";
+import {
+  Addons,
+  defaultState,
+  PricingData,
+  StateKeys,
+} from "./interfaces-states";
+import useSWR from "swr";
+
+const fetcher = (url: URL) => fetch(url).then((res) => res.json());
 
 type Context = typeof defaultState & {
   handleChange(event: React.ChangeEvent<HTMLInputElement>): void;
 };
 
 const AppContext = React.createContext<Context | undefined>(undefined);
-export default function AppProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+type Props = { children: React.ReactNode };
+
+export default function AppProvider({ children }: Props) {
   const [state, setState] = React.useState<typeof defaultState>(defaultState);
+  const { data, error, isLoading } = useSWR("/api/pricing", fetcher);
+
+  React.useEffect(() => {
+    if (error) {
+      setState({ ...state, error: true, loading: false });
+      return;
+    }
+
+    if (!data) {
+      setState({ ...state, loading: true });
+      return;
+    } else {
+      const pricing: PricingData = JSON.parse(data);
+      setState({ ...state, loading: false, pricing });
+    }
+  }, [data, error, isLoading]);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const name = event.target.name as StateKeys;

@@ -1,0 +1,30 @@
+{
+  "plans": {
+    "arcade": {
+      "monthly": 9,
+      "yearly": 90
+    },
+    "advanced": {
+      "monthly": 9,
+      "yearly": 90
+    },
+    "pro": {
+      "monthly": 9,
+      "yearly": 90
+    }
+  },
+  "addons": {
+    "service": {
+      "monthly": 9,
+      "yearly": 90
+    },
+    "storage": {
+      "monthly": 12,
+      "yearly": 120
+    },
+    "profile": {
+      "monthly": 15,
+      "yearly": 150
+    }
+  }
+}

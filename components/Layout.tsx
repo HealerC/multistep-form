@@ -1,11 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import Head from "next/head";
+import { useAppContext } from "@/context/app-context";
 
 type LayoutProps = {
   children: React.ReactNode;
 };
 export default function Layout({ children }: LayoutProps) {
+  const { loading } = useAppContext();
   return (
     <>
       <Head>
@@ -34,7 +36,8 @@ export default function Layout({ children }: LayoutProps) {
             </li>
           </ul>
         </nav>
-        <main>{children}</main>
+
+        <main>{loading ? "Loading..." : children}</main>
       </div>
     </>
   );
