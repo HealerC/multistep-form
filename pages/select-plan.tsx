@@ -1,9 +1,10 @@
 import { useAppContext } from "@/context/app-context";
+import Layout from "@/components/Layout";
 
 export default function SelectPlan() {
   const { plan, planDuration, handleChange } = useAppContext();
   return (
-    <div>
+    <Layout>
       <h2>Select your plan</h2>
       <p>You have the option of monthly or yearly billing.</p>
       <label htmlFor="arcade">Arcade $9/mo</label>
@@ -43,6 +44,6 @@ export default function SelectPlan() {
         checked={planDuration === "yearly"}
         onChange={handleChange}
       />
-    </div>
+    </Layout>
   );
 }

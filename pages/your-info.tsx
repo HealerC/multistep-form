@@ -1,11 +1,12 @@
 import React from "react";
 import { useAppContext } from "@/context/app-context";
+import Layout from "@/components/Layout";
 
 export default function YourInfo() {
   const { name, email, phone, handleChange } = useAppContext();
 
   return (
-    <div>
+    <Layout>
       <h2>Personal info</h2>
       <p>Please provide your name, email address and phone number</p>
       <label htmlFor="name">name</label>
@@ -34,6 +35,6 @@ export default function YourInfo() {
         onChange={handleChange}
         id="phone"
       />
-    </div>
+    </Layout>
   );
 }

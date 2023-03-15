@@ -1,10 +1,11 @@
-import { useAppContext } from "@/context/app-context";
 import React from "react";
+import Layout from "@/components/Layout";
+import { useAppContext } from "@/context/app-context";
 
 export default function AddOns() {
   const { addOns, handleChange } = useAppContext();
   return (
-    <div>
+    <Layout>
       <h2>Pick add-ons</h2>
       <p>Add-ons help enhance your gaming experience</p>
       <label htmlFor="service">
@@ -40,6 +41,6 @@ export default function AddOns() {
         onChange={handleChange}
         id="profile"
       />
-    </div>
+    </Layout>
   );
 }
