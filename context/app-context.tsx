@@ -11,6 +11,7 @@ const fetcher = (url: URL) => fetch(url).then((res) => res.json());
 
 type Context = typeof defaultState & {
   handleChange(event: React.ChangeEvent<HTMLInputElement>): void;
+  confirm(): void;
 };
 
 const AppContext = React.createContext<Context | undefined>(undefined);
@@ -54,8 +55,12 @@ export default function AppProvider({ children }: Props) {
     setState({ ...state, [name]: value });
   }
 
+  function confirm() {
+    setState({ ...state, isConfirmed: true });
+  }
+
   return (
-    <AppContext.Provider value={{ ...state, handleChange }}>
+    <AppContext.Provider value={{ ...state, handleChange, confirm }}>
       {children}
     </AppContext.Provider>
   );

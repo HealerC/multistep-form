@@ -3,11 +3,10 @@ import { useAppContext } from "@/context/app-context";
 import Layout from "@/components/Layout";
 
 export default function Summary() {
-  const { plan, planDuration, addOns, pricing, isConcluded } = useAppContext();
-  console.log(pricing);
+  const { plan, planDuration, addOns, pricing, isConfirmed } = useAppContext();
   return (
     <Layout>
-      {isConcluded ? (
+      {isConfirmed ? (
         <>
           <h1>Thank you!</h1>
           <p>

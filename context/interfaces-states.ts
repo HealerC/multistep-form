@@ -30,7 +30,7 @@ export const defaultState = {
   error: false,
   loading: true,
   pricing: {} as PricingData,
-  isConcluded: false,
+  isConfirmed: false,
 };
 
 export type StateKeys = keyof typeof defaultState;
