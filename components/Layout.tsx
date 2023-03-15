@@ -7,7 +7,7 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 export default function Layout({ children }: LayoutProps) {
-  const { loading } = useAppContext();
+  const { loading, error } = useAppContext();
   return (
     <>
       <Head>
@@ -40,6 +40,8 @@ export default function Layout({ children }: LayoutProps) {
         <main>
           {loading ? (
             <>Loading...</>
+          ) : error ? (
+            <>Error</>
           ) : (
             <>
               {children}
