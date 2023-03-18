@@ -10,7 +10,15 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 export default function Layout({ children }: LayoutProps) {
-  const { loading, error, confirm, isConfirmed } = useAppContext();
+  const {
+    loading,
+    error,
+    confirm,
+    isConfirmed,
+    setUserInfo,
+    formHandler: { getValues, trigger, isValid },
+  } = useAppContext();
+
   const router = useRouter();
 
   function handlePrevious() {
@@ -21,6 +29,15 @@ export default function Layout({ children }: LayoutProps) {
     if (isLastRoute) {
       confirm();
       return;
+    }
+    if (isFirstRoute) {
+      if (isValid) {
+        const { name, email, phone } = getValues();
+        setUserInfo({ name, email, phone });
+      } else {
+        trigger();
+        return;
+      }
     }
     const presentIndex = routePaths.indexOf(router.asPath);
     router.push(routePaths[presentIndex + 1]);
@@ -67,6 +84,7 @@ export default function Layout({ children }: LayoutProps) {
           ) : (
             <>
               {children}
+
               <div className="bg-orange-300">
                 {!isFirstRoute && (
                   <button onClick={handlePrevious}>Go Back</button>

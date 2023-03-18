@@ -6,12 +6,33 @@ import {
   StateKeys,
 } from "./interfaces-states";
 import useSWR from "swr";
+import { UserInfo } from "./interfaces-states";
+import {
+  UseFormRegister,
+  FieldErrors,
+  UseFormGetValues,
+  UseFormTrigger,
+} from "react-hook-form/dist/types";
+import { useForm } from "react-hook-form";
 
+// Handle validation of the form
+type ReactHookForm = {
+  register: UseFormRegister<UserInfo>;
+  getValues: UseFormGetValues<UserInfo>;
+  errors: FieldErrors<UserInfo>;
+  isValid: boolean;
+  trigger: UseFormTrigger<UserInfo>;
+};
+
+// Fetcher which SWR wraps in order to fetch JSON from API
 const fetcher = (url: URL) => fetch(url).then((res) => res.json());
 
+// App Context which all components will utilize
 type Context = typeof defaultState & {
   handleChange(event: React.ChangeEvent<HTMLInputElement>): void;
   confirm(): void;
+  setUserInfo(user: UserInfo): void;
+  formHandler: ReactHookForm;
 };
 
 const AppContext = React.createContext<Context | undefined>(undefined);
@@ -19,6 +40,19 @@ type Props = { children: React.ReactNode };
 
 export default function AppProvider({ children }: Props) {
   const [state, setState] = React.useState<typeof defaultState>(defaultState);
+  const {
+    register,
+    getValues,
+    formState: { errors, isValid },
+    trigger,
+  } = useForm<UserInfo>({
+    mode: "onTouched",
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+    },
+  });
   const { data, error, isLoading } = useSWR("/api/pricing", fetcher);
 
   React.useEffect(() => {
@@ -59,8 +93,24 @@ export default function AppProvider({ children }: Props) {
     setState({ ...state, isConfirmed: true });
   }
 
+  function setUserInfo(user: UserInfo) {
+    if (user.name && user.email && user.phone) {
+      setState({ ...state, ...user });
+    } else {
+      console.log("Something is going on");
+    }
+  }
+
   return (
-    <AppContext.Provider value={{ ...state, handleChange, confirm }}>
+    <AppContext.Provider
+      value={{
+        ...state,
+        handleChange,
+        confirm,
+        setUserInfo,
+        formHandler: { register, errors, trigger, getValues, isValid },
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
