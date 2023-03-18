@@ -1,3 +1,22 @@
+type AddOnPhrases = {
+  [key in Addons]: { label: string; moreInfo: string };
+};
+
+export const addOnPhrases: AddOnPhrases = {
+  service: {
+    label: "Online service",
+    moreInfo: "Access to multiplayer games",
+  },
+  storage: {
+    label: "Larger storage",
+    moreInfo: "Extra 1TB of cloud save",
+  },
+  profile: {
+    label: "Customizable profile",
+    moreInfo: "Custom theme on your profile",
+  },
+};
+
 export type UserInfo = {
   name: string;
   email: string;

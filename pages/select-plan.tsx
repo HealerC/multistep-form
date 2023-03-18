@@ -10,7 +10,7 @@ export default function SelectPlan() {
       <h2>Select your plan</h2>
       <p>You have the option of monthly or yearly billing.</p>
       <label htmlFor="arcade">
-        Arcade {getPlanPricing(pricing, "arcade", planDuration)}{" "}
+        Arcade {getPlanPricing(pricing, "arcade", planDuration)[1]}{" "}
       </label>
       <input
         type="radio"
@@ -22,7 +22,7 @@ export default function SelectPlan() {
       />
       {planDuration === "yearly" && "2 months free"}
       <label htmlFor="advanced">
-        Advanced {getPlanPricing(pricing, "advanced", planDuration)}
+        Advanced {getPlanPricing(pricing, "advanced", planDuration)[1]}
       </label>
       <input
         type="radio"
@@ -34,7 +34,7 @@ export default function SelectPlan() {
       />
       {planDuration === "yearly" && "2 months free"}
       <label htmlFor="pro">
-        Pro {getPlanPricing(pricing, "pro", planDuration)}
+        Pro {getPlanPricing(pricing, "pro", planDuration)[1]}
       </label>
       <input
         type="radio"

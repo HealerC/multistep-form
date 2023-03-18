@@ -12,7 +12,7 @@ export default function AddOns() {
       <p>Add-ons help enhance your gaming experience</p>
       <label htmlFor="service">
         Online service (Access to multiplayer games) +
-        {getAddOnPricing(pricing, "service", planDuration)}
+        {getAddOnPricing(pricing, "service", planDuration)[1]}
       </label>
       <input
         type="checkbox"
@@ -24,7 +24,7 @@ export default function AddOns() {
       />
       <label htmlFor="storage">
         Larger storage (Extra 1TB of cloud save) +
-        {getAddOnPricing(pricing, "storage", planDuration)}
+        {getAddOnPricing(pricing, "storage", planDuration)[1]}
       </label>
       <input
         type="checkbox"
@@ -36,7 +36,7 @@ export default function AddOns() {
       />
       <label htmlFor="profile">
         Customizable profile (Custom theme on your profile) +
-        {getAddOnPricing(pricing, "profile", planDuration)}
+        {getAddOnPricing(pricing, "profile", planDuration)[1]}
       </label>
       <input
         type="checkbox"
