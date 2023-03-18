@@ -1,13 +1,26 @@
 import { useAppContext } from "@/context/app-context";
 import Layout from "@/components/Layout";
+import { Plan, PlanDuration } from "@/context/interfaces-states";
 
 export default function SelectPlan() {
-  const { plan, planDuration, handleChange } = useAppContext();
+  const { plan, planDuration, handleChange, pricing } = useAppContext();
+
+  function getPlanPricing(plan: Plan, duration: PlanDuration) {
+    console.log(plan, duration);
+    return (
+      "$" +
+      pricing.plans[plan][duration] +
+      (duration === "monthly" ? "/mo" : "/yr")
+    );
+  }
+
   return (
     <Layout>
       <h2>Select your plan</h2>
       <p>You have the option of monthly or yearly billing.</p>
-      <label htmlFor="arcade">Arcade $9/mo</label>
+      <label htmlFor="arcade">
+        Arcade {getPlanPricing("arcade", planDuration)}{" "}
+      </label>
       <input
         type="radio"
         name="plan"
@@ -16,7 +29,10 @@ export default function SelectPlan() {
         checked={plan === "arcade"}
         onChange={handleChange}
       />
-      <label htmlFor="advanced">Advanced $12/mo</label>
+      {planDuration === "yearly" && "2 months free"}
+      <label htmlFor="advanced">
+        Advanced {getPlanPricing("advanced", planDuration)}
+      </label>
       <input
         type="radio"
         name="plan"
@@ -25,6 +41,17 @@ export default function SelectPlan() {
         checked={plan === "advanced"}
         onChange={handleChange}
       />
+      {planDuration === "yearly" && "2 months free"}
+      <label htmlFor="pro">Pro {getPlanPricing("pro", planDuration)}</label>
+      <input
+        type="radio"
+        name="plan"
+        value="pro"
+        id="pro"
+        checked={plan === "pro"}
+        onChange={handleChange}
+      />
+      {planDuration === "yearly" && "2 months free"}
 
       <label htmlFor="monthly">Monthly</label>
       <input
