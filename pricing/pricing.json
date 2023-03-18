@@ -15,16 +15,16 @@
   },
   "addons": {
     "service": {
-      "monthly": 9,
-      "yearly": 90
+      "monthly": 1,
+      "yearly": 10
     },
     "storage": {
-      "monthly": 12,
-      "yearly": 120
+      "monthly": 2,
+      "yearly": 20
     },
     "profile": {
-      "monthly": 15,
-      "yearly": 150
+      "monthly": 2,
+      "yearly": 20
     }
   }
 }
