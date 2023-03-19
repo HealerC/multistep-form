@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useAppContext } from "@/context/app-context";
 import NavStep from "./NavStep";
 import styles from "../styles/Layout.module.css";
+import ButtonSimple from "./ButtonSimple";
 
 const routePaths = [
   { route: "/your-info", label: "your info" },
@@ -69,7 +70,7 @@ export default function Layout({ children }: LayoutProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon-32x32.png" />
       </Head>
-      <div className="flex h-3/4 w-4/6 rounded-lg bg-red-500 p-3">
+      <div className="flex h-3/4 w-4/6 rounded-lg bg-white p-3 shadow-lg">
         <nav className={`${styles.navBgImage} mr-3 shrink-0 rounded-lg`}>
           <ul className="pt-6 pl-6 pr-14">
             {routePaths.map((routePath, index) => (
@@ -84,27 +85,36 @@ export default function Layout({ children }: LayoutProps) {
           </ul>
         </nav>
 
-        <main>
-          {loading ? (
-            <>Loading...</>
-          ) : error ? (
-            <>Error</>
-          ) : (
-            <>
-              {children}
+        <main className="flex grow justify-center">
+          <div className="pt-5">
+            {loading ? (
+              <>Loading...</>
+            ) : error ? (
+              <>Error!</>
+            ) : (
+              <>
+                {children}
+                <div className="flex justify-between">
+                  <ButtonSimple
+                    classes={isFirstRoute ? "invisible" : ""}
+                    type="back"
+                    handleClick={handlePrevious}
+                  >
+                    Go Back
+                  </ButtonSimple>
 
-              <div className="bg-orange-300">
-                {!isFirstRoute && (
-                  <button onClick={handlePrevious}>Go Back</button>
-                )}
-                {!isConfirmed && (
-                  <button onClick={handleNext}>
-                    {isLastRoute ? "Confirm" : "Next Step"}
-                  </button>
-                )}
-              </div>
-            </>
-          )}
+                  {!isConfirmed && (
+                    <ButtonSimple
+                      type={isLastRoute ? "confirm" : "step"}
+                      handleClick={handleNext}
+                    >
+                      {isLastRoute ? "Confirm" : "Next Step"}
+                    </ButtonSimple>
+                  )}
+                </div>
+              </>
+            )}
+          </div>
         </main>
       </div>
     </>

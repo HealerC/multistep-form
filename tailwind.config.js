@@ -18,7 +18,9 @@ module.exports = {
       colors: {
         blue: {
           "marine-dark": "hsl(213, 96%, 18%)",
+          "marine-lighter": "hsl(214, 71%, 31%)",
           standard: "hsl(243, 100%, 62%)",
+          "standard-lighter": "hsl(243, 93%, 77%)",
           "pastel-light": "hsl(228, 100%, 84%)",
           light: "hsl(206, 94%, 87%)",
           lighter: "hsla(206, 94%, 87%, 0.8)",
