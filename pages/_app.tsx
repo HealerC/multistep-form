@@ -12,7 +12,9 @@ const ubuntu = Ubuntu({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <AppProvider>
-      <div className={`${ubuntu.variable} font-sans`}>
+      <div
+        className={`${ubuntu.variable} flex h-screen items-center justify-center font-sans`}
+      >
         <Component {...pageProps} />
       </div>
     </AppProvider>

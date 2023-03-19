@@ -68,7 +68,7 @@ export default function Layout({ children }: LayoutProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon-32x32.png" />
       </Head>
-      <div>
+      <div className="h-3/4 w-4/6 rounded-lg bg-red-500">
         <nav className="bg-blue-standard">
           <ul>
             {routePaths.map((routePath, index) => (
