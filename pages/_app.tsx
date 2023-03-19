@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <AppProvider>
       <div
-        className={`${ubuntu.variable} flex h-screen items-center justify-center font-sans`}
+        className={`${ubuntu.variable} flex h-screen items-center justify-center bg-magnolia font-sans`}
       >
         <Component {...pageProps} />
       </div>
