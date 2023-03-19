@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/app-context";
 import NavStep from "./NavStep";
+import styles from "../styles/Layout.module.css";
 
 const routePaths = [
   { route: "/your-info", label: "your info" },
@@ -68,9 +69,9 @@ export default function Layout({ children }: LayoutProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon-32x32.png" />
       </Head>
-      <div className="h-3/4 w-4/6 rounded-lg bg-red-500">
-        <nav className="bg-blue-standard">
-          <ul>
+      <div className="flex h-3/4 w-4/6 rounded-lg bg-red-500 p-3">
+        <nav className={`${styles.navBgImage} mr-3 shrink-0 rounded-lg`}>
+          <ul className="pt-6 pl-6 pr-14">
             {routePaths.map((routePath, index) => (
               <li key={routePath.route} className="mb-7">
                 <NavStep

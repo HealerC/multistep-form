@@ -1,0 +1,5 @@
+.navBgImage {
+  @apply bg-blue-standard;
+  background-image: url("../assets/images/bg-sidebar-desktop.svg");
+  background-size: cover;
+}

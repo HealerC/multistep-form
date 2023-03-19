@@ -21,8 +21,8 @@ export default function NavStep({ stepIndex, label, route }: NavStepProps) {
           {stepIndex}
         </div>
         <div className="uppercase">
-          <p className="text-sm text-gray-light">step {stepIndex}</p>
-          <p className="font-medium text-white">{label}</p>
+          <p className="text-xs text-gray-light">step {stepIndex}</p>
+          <p className="text-sm font-medium text-white">{label}</p>
         </div>
       </div>
     </Link>
