@@ -21,6 +21,7 @@ module.exports = {
           standard: "hsl(243, 100%, 62%)",
           "pastel-light": "hsl(228, 100%, 84%)",
           light: "hsl(206, 94%, 87%)",
+          lighter: "hsla(206, 94%, 87%, 0.8)",
         },
         red: {
           strawberry: "hsl(354, 84%, 57%)",

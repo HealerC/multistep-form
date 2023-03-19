@@ -3,8 +3,14 @@ import Link from "next/link";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/context/app-context";
+import NavStep from "./NavStep";
 
-const routePaths = ["/your-info", "/select-plan", "/add-ons", "/summary"];
+const routePaths = [
+  { route: "/your-info", label: "your info" },
+  { route: "/select-plan", label: "select plan" },
+  { route: "/add-ons", label: "add-ons" },
+  { route: "/summary", label: "summary" },
+];
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -22,8 +28,11 @@ export default function Layout({ children }: LayoutProps) {
   const router = useRouter();
 
   function handlePrevious() {
-    const presentIndex = routePaths.indexOf(router.asPath);
-    router.push(routePaths[presentIndex - 1]);
+    // const presentIndex = routePaths.indexOf(router.asPath);
+    const presentIndex = routePaths.findIndex(
+      (path) => path.route === router.asPath
+    );
+    router.push(routePaths[presentIndex - 1].route);
   }
   function handleNext() {
     if (isLastRoute) {
@@ -39,13 +48,14 @@ export default function Layout({ children }: LayoutProps) {
         return;
       }
     }
-    const presentIndex = routePaths.indexOf(router.asPath);
-    router.push(routePaths[presentIndex + 1]);
+    const presentIndex = routePaths.findIndex(
+      (path) => path.route === router.asPath
+    );
+    router.push(routePaths[presentIndex + 1].route);
   }
 
-  const isFirstRoute = routePaths.indexOf(router.asPath) === 0;
-  const isLastRoute =
-    routePaths.indexOf(router.asPath) === routePaths.length - 1;
+  const isFirstRoute = router.asPath === routePaths[0].route;
+  const isLastRoute = router.asPath === routePaths[routePaths.length - 1].route;
 
   return (
     <>
@@ -59,20 +69,17 @@ export default function Layout({ children }: LayoutProps) {
         <link rel="icon" href="/favicon-32x32.png" />
       </Head>
       <div>
-        <nav>
+        <nav className="bg-blue-standard">
           <ul>
-            <li>
-              <Link href={`${routePaths[0]}`}>your info</Link>
-            </li>
-            <li>
-              <Link href={`${routePaths[1]}`}>select plan</Link>
-            </li>
-            <li>
-              <Link href={`${routePaths[2]}`}>add-ons</Link>
-            </li>
-            <li>
-              <Link href={`${routePaths[3]}`}>summary</Link>
-            </li>
+            {routePaths.map((routePath, index) => (
+              <li key={routePath.route} className="mb-7">
+                <NavStep
+                  stepIndex={index + 1}
+                  route={routePath.route}
+                  label={routePath.label}
+                />
+              </li>
+            ))}
           </ul>
         </nav>
 
