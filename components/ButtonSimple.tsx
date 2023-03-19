@@ -19,7 +19,7 @@ export default function ButtonSimple({
 }: ButtonSimpleProps) {
   return (
     <button
-      className={`${styles[type]} rounded-md px-3 py-2 transition-colors ${classes}`}
+      className={`${styles[type]} rounded-md px-5 py-2.5 text-sm transition-colors ${classes}`}
       onClick={handleClick}
     >
       {children}
