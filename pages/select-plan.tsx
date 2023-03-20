@@ -1,69 +1,77 @@
 import { useAppContext } from "@/context/app-context";
 import Layout from "@/components/Layout";
 import { getPlanPricing } from "@/utils/get-pricing";
+import HeadersPage from "@/components/HeadersPage";
+import arcadeIcon from "@/assets/images/icon-arcade.svg";
+import advancedIcon from "@/assets/images/icon-advanced.svg";
+import proIcon from "@/assets/images/icon-pro.svg";
+import RadioCustom from "@/components/RadioCustom";
+import CustomRadioContent from "@/components/CustomRadioContent";
+import CustomToggleSlider from "@/components/CustomToggleSlider";
 
 export default function SelectPlan() {
   const { plan, planDuration, handleChange, pricing } = useAppContext();
 
   return (
     <Layout>
-      <h2>Select your plan</h2>
-      <p>You have the option of monthly or yearly billing.</p>
-      <label htmlFor="arcade">
-        Arcade {getPlanPricing(pricing, "arcade", planDuration)[1]}{" "}
-      </label>
-      <input
-        type="radio"
-        name="plan"
-        value="arcade"
-        id="arcade"
-        checked={plan === "arcade"}
-        onChange={handleChange}
+      <HeadersPage
+        heading="Select your plan"
+        info="You have the option of monthly or yearly billing."
       />
-      {planDuration === "yearly" && "2 months free"}
-      <label htmlFor="advanced">
-        Advanced {getPlanPricing(pricing, "advanced", planDuration)[1]}
-      </label>
-      <input
-        type="radio"
-        name="plan"
-        value="advanced"
-        id="advanced"
-        checked={plan === "advanced"}
-        onChange={handleChange}
-      />
-      {planDuration === "yearly" && "2 months free"}
-      <label htmlFor="pro">
-        Pro {getPlanPricing(pricing, "pro", planDuration)[1]}
-      </label>
-      <input
-        type="radio"
-        name="plan"
-        value="pro"
-        id="pro"
-        checked={plan === "pro"}
-        onChange={handleChange}
-      />
-      {planDuration === "yearly" && "2 months free"}
 
-      <label htmlFor="monthly">Monthly</label>
-      <input
-        type="radio"
-        name="planDuration"
-        value="monthly"
-        id="monthly"
-        checked={planDuration === "monthly"}
-        onChange={handleChange}
-      />
-      <label htmlFor="yearly">Yearly</label>
-      <input
-        type="radio"
-        name="planDuration"
-        value="yearly"
-        id="yearly"
-        checked={planDuration === "yearly"}
-        onChange={handleChange}
-      />
+      <fieldset className="grid grid-cols-3 gap-3">
+        <RadioCustom
+          name="plan"
+          value="arcade"
+          checked={plan === "arcade"}
+          handleChange={handleChange}
+        >
+          <CustomRadioContent
+            imageSrc={arcadeIcon}
+            plan="arcade"
+            pricing={getPlanPricing(pricing, "arcade", planDuration)[1]}
+            planDuration={planDuration}
+          />
+        </RadioCustom>
+
+        <RadioCustom
+          name="plan"
+          value="advanced"
+          checked={plan === "advanced"}
+          handleChange={handleChange}
+        >
+          <CustomRadioContent
+            imageSrc={advancedIcon}
+            plan="advanced"
+            pricing={getPlanPricing(pricing, "advanced", planDuration)[1]}
+            planDuration={planDuration}
+          />
+        </RadioCustom>
+
+        <RadioCustom
+          name="plan"
+          value="pro"
+          checked={plan === "pro"}
+          handleChange={handleChange}
+        >
+          <CustomRadioContent
+            imageSrc={proIcon}
+            plan="pro"
+            pricing={getPlanPricing(pricing, "pro", planDuration)[1]}
+            planDuration={planDuration}
+          />
+        </RadioCustom>
+      </fieldset>
+
+      <div className="mt-6 rounded-lg bg-magnolia ">
+        <CustomToggleSlider
+          name="planDuration"
+          values={["monthly", "yearly"]}
+          handleChange={handleChange}
+          value={planDuration}
+          labels={["monthly", "yearly"]}
+        />
+      </div>
     </Layout>
   );
 }
