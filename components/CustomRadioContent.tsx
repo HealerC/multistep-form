@@ -15,9 +15,9 @@ export default function CustomRadioContent({
   planDuration,
 }: RadioContentProps) {
   return (
-    <div>
+    <div className="flex sm:block">
       <Image src={imageSrc} alt="" />
-      <div className="mt-7">
+      <div className="ml-3 sm:ml-0 sm:mt-7">
         <p className="font-medium capitalize text-blue-marine-dark">{plan}</p>
         <p className="mb-1 text-sm text-gray-cool">{pricing}</p>
         <p

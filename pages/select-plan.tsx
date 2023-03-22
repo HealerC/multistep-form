@@ -20,7 +20,7 @@ export default function SelectPlan() {
           info="You have the option of monthly or yearly billing."
         />
 
-        <fieldset className="grid grid-cols-3 gap-3">
+        <fieldset className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           <RadioCustom
             name="plan"
             value="arcade"
