@@ -16,7 +16,7 @@ export default function CheckboxCustom({
 }: CheckboxCustomProps) {
   return (
     <div
-      className={`mb-4 flex cursor-pointer select-none rounded-lg border border-gray-light p-4 transition ${
+      className={`mb-4 flex cursor-pointer select-none rounded-lg border border-gray-light p-3 transition sm:p-4 ${
         checked && "border-blue-standard bg-magnolia"
       }`}
       onClick={() =>
@@ -28,7 +28,7 @@ export default function CheckboxCustom({
         } as ChangeEvent<HTMLInputElement>)
       }
     >
-      <div className="flex items-center justify-center pr-5">
+      <div className="flex items-center justify-center pr-3 sm:pr-5">
         <label className="group relative block h-5 w-5 cursor-pointer select-none">
           <input
             type="checkbox"

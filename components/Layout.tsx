@@ -89,7 +89,7 @@ export default function Layout({ children }: LayoutProps) {
         </nav>
 
         <main className="relative bottom-16 flex w-11/12 grow justify-center self-center rounded-lg border bg-white shadow-md sm:static sm:w-full sm:self-auto sm:shadow-none">
-          <div className="flex w-9/12 flex-col justify-between pt-5">
+          <div className="flex w-10/12 flex-col justify-between pt-5 sm:w-9/12">
             {loading ? (
               <>Loading...</>
             ) : error ? (

@@ -12,7 +12,7 @@ export default function CustomCheckboxContent({
     <div className="flex grow items-center justify-between">
       <div>
         <p className="font-medium text-blue-marine-dark">{heading}</p>
-        <p className="text-sm text-gray-cool">{info}</p>
+        <p className="text-xs text-gray-cool">{info}</p>
       </div>
       <p className="text-sm text-blue-standard">{pricing}</p>
     </div>
