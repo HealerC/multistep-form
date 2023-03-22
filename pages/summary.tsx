@@ -73,15 +73,13 @@ export default function Summary() {
               ))}
             </tbody>
           </table>
-          <section className="block p-5">
-            <tr className="flex justify-between">
-              <h4 className="text-sm text-gray-cool">
-                Total (per {planDuration.replace("ly", "")})
-              </h4>
-              <p className="text-lg font-bold text-blue-standard">
-                {sumTotal[1]}
-              </p>
-            </tr>
+          <section className="flex justify-between p-5">
+            <h4 className="text-sm text-gray-cool">
+              Total (per {planDuration.replace("ly", "")})
+            </h4>
+            <p className="text-lg font-bold text-blue-standard">
+              {sumTotal[1]}
+            </p>
           </section>
         </div>
       )}
