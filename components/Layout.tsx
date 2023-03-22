@@ -71,7 +71,7 @@ export default function Layout({ children }: LayoutProps) {
         <link rel="icon" href="/favicon-32x32.png" />
       </Head>
       {/* h-3/4 max-h-[40rem] tall:h-3/6 */}
-      <div className="flex h-full w-full flex-col rounded-lg bg-magnolia shadow-lg sm:h-3/4 sm:w-10/12 sm:flex-row sm:bg-white sm:p-3 lg:w-4/6">
+      <div className="flex h-full w-full flex-col rounded-lg bg-magnolia shadow-lg sm:h-3/4 sm:w-11/12 sm:flex-row sm:bg-white sm:p-3 lg:w-4/6">
         <nav
           className={`${styles.navBgImage} h-1/4 shrink-0 sm:mr-3 sm:h-full sm:rounded-lg`}
         >
