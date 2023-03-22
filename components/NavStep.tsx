@@ -20,7 +20,7 @@ export default function NavStep({ stepIndex, label, route }: NavStepProps) {
         >
           {stepIndex}
         </div>
-        <div className="uppercase">
+        <div className="hidden uppercase sm:block">
           <p className="text-xs text-gray-light">step {stepIndex}</p>
           <p className="text-sm font-medium text-white">{label}</p>
         </div>

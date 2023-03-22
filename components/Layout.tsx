@@ -70,9 +70,12 @@ export default function Layout({ children }: LayoutProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon-32x32.png" />
       </Head>
-      <div className="flex h-3/4 w-4/6 rounded-lg bg-white p-3 shadow-lg">
-        <nav className={`${styles.navBgImage} mr-3 shrink-0 rounded-lg`}>
-          <ul className="pt-6 pl-6 pr-14">
+      {/* h-3/4 max-h-[40rem] tall:h-3/6 */}
+      <div className="flex h-full w-full flex-col rounded-lg bg-magnolia shadow-lg sm:h-3/4 sm:w-10/12 sm:flex-row sm:bg-white sm:p-3 lg:w-4/6">
+        <nav
+          className={`${styles.navBgImage} h-1/4 shrink-0 sm:mr-3 sm:h-full sm:rounded-lg`}
+        >
+          <ul className="flex justify-center  pt-6 pl-6 sm:block sm:pr-14">
             {routePaths.map((routePath, index) => (
               <li key={routePath.route} className="mb-7">
                 <NavStep
@@ -85,7 +88,7 @@ export default function Layout({ children }: LayoutProps) {
           </ul>
         </nav>
 
-        <main className="flex grow justify-center">
+        <main className="relative bottom-16 flex w-11/12 grow justify-center self-center rounded-lg border bg-white shadow-md sm:static sm:w-full sm:self-auto sm:shadow-none">
           <div className="flex w-9/12 flex-col justify-between pt-5">
             {loading ? (
               <>Loading...</>
@@ -94,7 +97,7 @@ export default function Layout({ children }: LayoutProps) {
             ) : (
               <>
                 {children}
-                <div className="flex justify-between">
+                <div className="fixed bottom-0 left-0 flex w-full justify-between border border-pink-400 bg-white p-2 sm:static sm:p-0">
                   <ButtonSimple
                     classes={isFirstRoute ? "invisible" : ""}
                     type="back"

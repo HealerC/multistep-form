@@ -35,6 +35,11 @@ module.exports = {
         magnolia: "hsl(217, 100%, 97%)",
         alabaster: "hsl(231, 100%, 99%)",
       },
+      screens: {
+        tall: {
+          raw: "(min-height: 800px)",
+        },
+      },
     },
   },
   plugins: [],

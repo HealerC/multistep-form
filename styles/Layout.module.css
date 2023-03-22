@@ -1,5 +1,11 @@
 .navBgImage {
   @apply bg-blue-standard;
-  background-image: url("../assets/images/bg-sidebar-desktop.svg");
+  background-image: url("../assets/images/bg-sidebar-mobile.svg");
   background-size: cover;
+}
+
+@media (min-width: 640px) {
+  .navBgImage {
+    background-image: url("../assets/images/bg-sidebar-desktop.svg");
+  }
 }
