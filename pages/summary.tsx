@@ -9,6 +9,8 @@ import {
 } from "@/utils/get-pricing";
 import { addOnPhrases } from "@/context/interfaces-states";
 import HeadersPage from "@/components/HeadersPage";
+import ConfirmIcon from "@/assets/images/icon-thank-you.svg";
+import Image from "next/image";
 
 export default function Summary() {
   const { plan, planDuration, addOns, pricing, isConfirmed } = useAppContext();
@@ -17,17 +19,27 @@ export default function Summary() {
   return (
     <Layout>
       {isConfirmed ? (
-        <>
-          <h1>Thank you!</h1>
-          <p>
-            Thanks for confirming your subscription! We hope you have fun using
-            our platform! If you ever need support, please feel free to email us
-            at{" "}
-            <a href="mailto:support@loremgaming.com">support@loremgaming.com</a>
-          </p>
-        </>
+        <div className="flex grow items-center justify-center">
+          <div className="text-center">
+            <Image src={ConfirmIcon} alt="Thank you" className="mx-auto mb-8" />
+            <h2 className="text-3xl font-bold leading-8 text-blue-marine-dark">
+              Thank you!
+            </h2>
+            <p className="mt-2 text-[0.9rem] text-gray-cool">
+              Thanks for confirming your subscription! We hope you have fun
+              using our platform! If you ever need support, please feel free to
+              email us at{" "}
+              <a
+                href="mailto:support@loremgaming.com"
+                className="hover:underline"
+              >
+                support@loremgaming.com
+              </a>
+            </p>
+          </div>
+        </div>
       ) : (
-        <>
+        <div>
           <HeadersPage
             heading="Finishing up"
             info="Double-check everything looks OK before confirming."
@@ -71,7 +83,7 @@ export default function Summary() {
               </p>
             </tr>
           </section>
-        </>
+        </div>
       )}
     </Layout>
   );

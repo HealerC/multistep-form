@@ -86,7 +86,7 @@ export default function Layout({ children }: LayoutProps) {
         </nav>
 
         <main className="flex grow justify-center">
-          <div className="w-9/12 pt-5">
+          <div className="flex w-9/12 flex-col justify-between pt-5">
             {loading ? (
               <>Loading...</>
             ) : error ? (
