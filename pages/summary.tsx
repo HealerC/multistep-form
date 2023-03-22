@@ -8,6 +8,7 @@ import {
   getSumPricing,
 } from "@/utils/get-pricing";
 import { addOnPhrases } from "@/context/interfaces-states";
+import HeadersPage from "@/components/HeadersPage";
 
 export default function Summary() {
   const { plan, planDuration, addOns, pricing, isConfirmed } = useAppContext();
@@ -27,19 +28,49 @@ export default function Summary() {
         </>
       ) : (
         <>
-          <h2>Finishing up</h2>
-          <p>Double-check everything looks OK before confirming.</p>
-          <h3>
-            {plan} ({planDuration}) <Link href="/select-plan">Change</Link>{" "}
-            {getPlanPricing(pricing, plan, planDuration)[1]}
-            {addOns.map((addOn) => (
-              <div key={addOn}>
-                {addOnPhrases[addOn].label} +
-                {getAddOnPricing(pricing, addOn, planDuration)[1]}
-              </div>
-            ))}
-            Total (per {planDuration.replace("ly", "")}) {sumTotal[1]}
-          </h3>
+          <HeadersPage
+            heading="Finishing up"
+            info="Double-check everything looks OK before confirming."
+          />
+          <table className="block rounded-lg bg-magnolia p-5 shadow">
+            <thead className="mb-3 block border-b border-b-gray-light pb-5">
+              <tr>
+                <th className="font-medium capitalize text-blue-marine-dark">
+                  {plan} ({planDuration})
+                </th>
+              </tr>
+              <tr className="flex justify-between">
+                <td className="text-sm text-gray-cool underline">
+                  <Link href="/select-plan">Change</Link>
+                </td>
+                <td className="text-sm font-bold text-blue-marine-dark">
+                  {getPlanPricing(pricing, plan, planDuration)[1]}
+                </td>
+              </tr>
+            </thead>
+            <tbody className="block">
+              {addOns.map((addOn) => (
+                <tr key={addOn} className="mb-3 flex justify-between">
+                  <th className="text-sm font-normal text-gray-cool">
+                    {addOnPhrases[addOn].label}
+                  </th>
+                  <td className="text-sm text-blue-marine-dark">
+                    +{getAddOnPricing(pricing, addOn, planDuration)[1]}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <section className="block p-5">
+            <tr className="flex justify-between">
+              <h4 className="text-sm text-gray-cool">
+                Total (per {planDuration.replace("ly", "")})
+              </h4>
+              <p className="text-lg font-bold text-blue-standard">
+                {sumTotal[1]}
+              </p>
+            </tr>
+          </section>
         </>
       )}
     </Layout>
