@@ -14,8 +14,10 @@ import Image from "next/image";
 
 export default function Summary() {
   const { plan, planDuration, addOns, pricing, isConfirmed } = useAppContext();
+  if (!pricing.plans) {
+    return;
+  }
   const sumTotal = getSumPricing(pricing, plan, planDuration, addOns);
-  console.log(sumTotal);
   return (
     <Layout>
       {isConfirmed ? (
@@ -38,7 +40,7 @@ export default function Summary() {
             </p>
           </div>
         </div>
-      ) : (
+      ) : pricing.plans ? (
         <div>
           <HeadersPage
             heading="Finishing up"
@@ -82,6 +84,8 @@ export default function Summary() {
             </p>
           </section>
         </div>
+      ) : (
+        <></>
       )}
     </Layout>
   );

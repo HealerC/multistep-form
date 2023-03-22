@@ -11,48 +11,56 @@ export default function AddOns() {
 
   return (
     <Layout>
-      <div>
-        <HeadersPage
-          heading="Pick add-ons"
-          info="Add-ons help enhance your gaming experience."
-        />
-        <CheckboxCustom
-          name="addOns"
-          value="service"
-          checked={addOns.includes("service")}
-          handleChange={handleChange}
-        >
-          <CustomCheckboxContent
-            heading="Online service"
-            info="Access to multiplayer games"
-            pricing={"+" + getAddOnPricing(pricing, "service", planDuration)[1]}
+      {pricing.plans && (
+        <div>
+          <HeadersPage
+            heading="Pick add-ons"
+            info="Add-ons help enhance your gaming experience."
           />
-        </CheckboxCustom>
-        <CheckboxCustom
-          name="addOns"
-          value="storage"
-          checked={addOns.includes("storage")}
-          handleChange={handleChange}
-        >
-          <CustomCheckboxContent
-            heading="Larger storage"
-            info="Extra 1TB of cloud save"
-            pricing={"+" + getAddOnPricing(pricing, "storage", planDuration)[1]}
-          />
-        </CheckboxCustom>
-        <CheckboxCustom
-          name="addOns"
-          value="profile"
-          checked={addOns.includes("profile")}
-          handleChange={handleChange}
-        >
-          <CustomCheckboxContent
-            heading="Customizable profile"
-            info="Custom theme on your profile"
-            pricing={"+" + getAddOnPricing(pricing, "profile", planDuration)[1]}
-          />
-        </CheckboxCustom>
-      </div>
+          <CheckboxCustom
+            name="addOns"
+            value="service"
+            checked={addOns.includes("service")}
+            handleChange={handleChange}
+          >
+            <CustomCheckboxContent
+              heading="Online service"
+              info="Access to multiplayer games"
+              pricing={
+                "+" + getAddOnPricing(pricing, "service", planDuration)[1]
+              }
+            />
+          </CheckboxCustom>
+          <CheckboxCustom
+            name="addOns"
+            value="storage"
+            checked={addOns.includes("storage")}
+            handleChange={handleChange}
+          >
+            <CustomCheckboxContent
+              heading="Larger storage"
+              info="Extra 1TB of cloud save"
+              pricing={
+                "+" + getAddOnPricing(pricing, "storage", planDuration)[1]
+              }
+            />
+          </CheckboxCustom>
+          <CheckboxCustom
+            name="addOns"
+            value="profile"
+            checked={addOns.includes("profile")}
+            handleChange={handleChange}
+          >
+            <CustomCheckboxContent
+              heading="Customizable profile"
+              info="Custom theme on your profile"
+              pricing={
+                "+" + getAddOnPricing(pricing, "profile", planDuration)[1]
+              }
+            />
+          </CheckboxCustom>
+        </div>
+      )}
     </Layout>
   );
 }
