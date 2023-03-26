@@ -93,7 +93,7 @@ export default function Layout({ children }: LayoutProps) {
           </ul>
         </nav>
 
-        <main className="relative bottom-16 flex w-11/12 grow justify-center self-center rounded-lg border bg-white shadow-md sm:static sm:w-full sm:self-auto sm:shadow-none">
+        <main className="relative bottom-16 flex w-11/12 grow justify-center self-center rounded-lg bg-white shadow-md sm:static sm:w-full sm:self-auto sm:shadow-none">
           <div className="flex w-10/12 flex-col justify-between pt-5 sm:w-9/12">
             {loading ? (
               <>Loading...</>
@@ -103,7 +103,7 @@ export default function Layout({ children }: LayoutProps) {
               <>
                 {children}
                 {!isConfirmed && (
-                  <div className="fixed bottom-0 left-0 flex w-full justify-between border border-pink-400 bg-white p-2 sm:static sm:mb-3 sm:p-0">
+                  <div className="fixed bottom-0 left-0 flex w-full justify-between bg-white p-2 sm:static sm:mb-3 sm:p-0">
                     <ButtonSimple
                       classes={isFirstRoute ? "invisible" : ""}
                       type="back"
