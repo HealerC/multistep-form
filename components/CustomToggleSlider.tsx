@@ -73,10 +73,13 @@ export default function CustomToggleSlider({
       <SliderLabel
         classes="ml-5"
         checked={value === values[1]}
-        handleClick={() =>
-          handleChange({
-            target: { name, value: values[1] },
-          } as React.ChangeEvent<HTMLInputElement>)
+        handleClick={
+          !disabled
+            ? () =>
+                handleChange({
+                  target: { name, value: values[1] },
+                } as React.ChangeEvent<HTMLInputElement>)
+            : () => {}
         }
         label={labels[1]}
       />
