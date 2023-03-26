@@ -10,7 +10,8 @@ import CustomRadioContent from "@/components/CustomRadioContent";
 import CustomToggleSlider from "@/components/CustomToggleSlider";
 
 export default function SelectPlan() {
-  const { plan, planDuration, handleChange, pricing } = useAppContext();
+  const { plan, planDuration, handleChange, pricing, isConfirmed } =
+    useAppContext();
 
   return (
     <Layout>
@@ -27,6 +28,7 @@ export default function SelectPlan() {
               value="arcade"
               checked={plan === "arcade"}
               handleChange={handleChange}
+              disabled={isConfirmed}
             >
               <CustomRadioContent
                 imageSrc={arcadeIcon}
@@ -41,6 +43,7 @@ export default function SelectPlan() {
               value="advanced"
               checked={plan === "advanced"}
               handleChange={handleChange}
+              disabled={isConfirmed}
             >
               <CustomRadioContent
                 imageSrc={advancedIcon}
@@ -55,6 +58,7 @@ export default function SelectPlan() {
               value="pro"
               checked={plan === "pro"}
               handleChange={handleChange}
+              disabled={isConfirmed}
             >
               <CustomRadioContent
                 imageSrc={proIcon}
@@ -72,6 +76,7 @@ export default function SelectPlan() {
               handleChange={handleChange}
               value={planDuration}
               labels={["monthly", "yearly"]}
+              disabled={isConfirmed}
             />
           </div>
         </div>

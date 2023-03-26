@@ -7,6 +7,7 @@ import TextFieldHookForm from "@/components/TextFieldHookForm";
 export default function YourInfo() {
   const {
     formHandler: { errors, register },
+    isConfirmed,
   } = useAppContext();
   return (
     <Layout>
@@ -24,6 +25,7 @@ export default function YourInfo() {
           validationRegister={register("name", {
             required: "Please enter your name",
           })}
+          disabled={isConfirmed}
         />
         <TextFieldHookForm
           helperText={
@@ -40,6 +42,7 @@ export default function YourInfo() {
             required: "This field is required",
             pattern: /^\S+@\S+$/i,
           })}
+          disabled={isConfirmed}
         />
         <TextFieldHookForm
           helperText={errors.phone && errors.phone.message}
@@ -51,6 +54,7 @@ export default function YourInfo() {
           validationRegister={register("phone", {
             required: "This field is required",
           })}
+          disabled={isConfirmed}
         />
       </div>
     </Layout>

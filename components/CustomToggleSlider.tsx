@@ -28,6 +28,7 @@ type CustomSliderProps = {
   values: [string, string];
   labels: [string, string];
   handleChange(event: React.ChangeEvent<HTMLInputElement>): void;
+  disabled?: boolean;
 };
 export default function CustomToggleSlider({
   name,
@@ -35,16 +36,20 @@ export default function CustomToggleSlider({
   values,
   labels,
   handleChange,
+  disabled,
 }: CustomSliderProps) {
   return (
     <div className="flex items-center justify-center p-4">
       <SliderLabel
         classes="mr-5"
         checked={value === values[0]}
-        handleClick={() =>
-          handleChange({
-            target: { name, value: values[0] },
-          } as React.ChangeEvent<HTMLInputElement>)
+        handleClick={
+          !disabled
+            ? () =>
+                handleChange({
+                  target: { name, value: values[0] },
+                } as React.ChangeEvent<HTMLInputElement>)
+            : () => {}
         }
         label={labels[0]}
       />
@@ -61,6 +66,7 @@ export default function CustomToggleSlider({
               },
             } as React.ChangeEvent<HTMLInputElement>)
           }
+          disabled={disabled}
         />
         <span className="absolute top-0 left-0 right-0 bottom-0 cursor-pointer rounded-[36px] bg-blue-marine-dark transition-all duration-300 before:absolute before:left-[3px] before:bottom-[3px] before:h-3.5 before:w-3.5 before:rounded-full before:bg-white before:transition-all before:duration-300 peer-checked:before:translate-x-5"></span>
       </label>

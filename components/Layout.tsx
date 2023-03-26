@@ -97,24 +97,26 @@ export default function Layout({ children }: LayoutProps) {
             ) : (
               <>
                 {children}
-                <div className="fixed bottom-0 left-0 flex w-full justify-between border border-pink-400 bg-white p-2 sm:static sm:p-0">
-                  <ButtonSimple
-                    classes={isFirstRoute ? "invisible" : ""}
-                    type="back"
-                    handleClick={handlePrevious}
-                  >
-                    Go Back
-                  </ButtonSimple>
-
-                  {!isConfirmed && (
+                {!isConfirmed && (
+                  <div className="fixed bottom-0 left-0 flex w-full justify-between border border-pink-400 bg-white p-2 sm:static sm:p-0">
                     <ButtonSimple
-                      type={isLastRoute ? "confirm" : "step"}
-                      handleClick={handleNext}
+                      classes={isFirstRoute ? "invisible" : ""}
+                      type="back"
+                      handleClick={handlePrevious}
                     >
-                      {isLastRoute ? "Confirm" : "Next Step"}
+                      Go Back
                     </ButtonSimple>
-                  )}
-                </div>
+
+                    {!isConfirmed && (
+                      <ButtonSimple
+                        type={isLastRoute ? "confirm" : "step"}
+                        handleClick={handleNext}
+                      >
+                        {isLastRoute ? "Confirm" : "Next Step"}
+                      </ButtonSimple>
+                    )}
+                  </div>
+                )}
               </>
             )}
           </div>

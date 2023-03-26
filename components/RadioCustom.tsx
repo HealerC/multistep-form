@@ -7,6 +7,7 @@ type RadioCustomProps = {
   handleChange: ChangeEventHandler<HTMLInputElement>;
   children: React.ReactNode;
   classes?: string;
+  disabled?: boolean;
 };
 
 export default function RadioCustom({
@@ -16,6 +17,7 @@ export default function RadioCustom({
   name,
   value,
   classes,
+  disabled,
 }: RadioCustomProps) {
   return (
     <label
@@ -31,6 +33,7 @@ export default function RadioCustom({
         checked={checked}
         onChange={handleChange}
         className="hidden"
+        disabled={disabled}
       />
       {children}
     </label>

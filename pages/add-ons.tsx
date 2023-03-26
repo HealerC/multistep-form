@@ -7,7 +7,8 @@ import CustomCheckboxContent from "@/components/CustomCheckboxContent";
 import CheckboxCustom from "@/components/CheckboxCustom";
 
 export default function AddOns() {
-  const { addOns, handleChange, planDuration, pricing } = useAppContext();
+  const { addOns, handleChange, planDuration, pricing, isConfirmed } =
+    useAppContext();
 
   return (
     <Layout>
@@ -22,6 +23,7 @@ export default function AddOns() {
             value="service"
             checked={addOns.includes("service")}
             handleChange={handleChange}
+            disabled={isConfirmed}
           >
             <CustomCheckboxContent
               heading="Online service"
@@ -36,6 +38,7 @@ export default function AddOns() {
             value="storage"
             checked={addOns.includes("storage")}
             handleChange={handleChange}
+            disabled={isConfirmed}
           >
             <CustomCheckboxContent
               heading="Larger storage"
@@ -50,6 +53,7 @@ export default function AddOns() {
             value="profile"
             checked={addOns.includes("profile")}
             handleChange={handleChange}
+            disabled={isConfirmed}
           >
             <CustomCheckboxContent
               heading="Customizable profile"

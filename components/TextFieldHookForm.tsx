@@ -9,6 +9,7 @@ type TextFieldProps = {
   autoComplete?: string;
   placeholder?: string;
   validationRegister: UseFormRegisterReturn;
+  disabled?: boolean;
 };
 
 export default function TextFieldHookForm({
@@ -19,6 +20,7 @@ export default function TextFieldHookForm({
   name,
   label,
   validationRegister,
+  disabled,
 }: TextFieldProps) {
   return (
     <fieldset className="mb-4 text-blue-marine-dark">
@@ -44,6 +46,7 @@ export default function TextFieldHookForm({
         {...validationRegister}
         id={name}
         required
+        disabled={disabled}
       />
     </fieldset>
   );
