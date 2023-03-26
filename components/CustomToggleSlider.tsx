@@ -58,7 +58,7 @@ export default function CustomToggleSlider({
           type="checkbox"
           className="peer h-0 w-0 opacity-0"
           checked={value === values[1]}
-          onClick={() =>
+          onChange={() =>
             handleChange({
               target: {
                 name,
