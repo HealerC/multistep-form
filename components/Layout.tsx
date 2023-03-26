@@ -69,11 +69,6 @@ export default function Layout({ children }: LayoutProps) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon-32x32.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap"
-          rel="stylesheet"
-        ></link>
       </Head>
       {/* h-3/4 max-h-[40rem] tall:h-3/6 */}
       <div className="flex h-full w-full flex-col rounded-lg bg-magnolia shadow-lg sm:h-3/4 sm:w-11/12 sm:flex-row sm:bg-white sm:p-3 lg:w-4/6">
