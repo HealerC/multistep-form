@@ -13,7 +13,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-ubuntu)", ...fontFamily.sans],
+        sans: ["Ubuntu", ...fontFamily.sans],
       },
       colors: {
         blue: {
